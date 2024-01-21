@@ -206,7 +206,7 @@ group by  b.language_id, l.language
 order by book_count DESC;
 
 -- 19.Издательствонун аттары жана алардын тапкан акчасынын оточо суммасы тегеректелип чыгарылсын.
-    select p.name,round(sum(price)) as total_price from books b inner join publishers p on b.publisher_id  = p.id group by p.name;
+    select p.name,round(avg(price)) as total_price from books b inner join publishers p on b.publisher_id  = p.id group by p.name;
 -- 20.2010-2015 жылдардын арасындагы китептер жана автордун аты-фамилиясы чыксын.
     select b.name as book_name, b.published_year,a.first_name, a.last_name from books b
         inner join authors a on a.id = b.author_id where b.published_year
@@ -216,6 +216,7 @@ select a.first_name, a.last_name, sum(b.price) from authors a
         inner join books b on a.id = b.author_id where b.published_year
                  between '2010-01-01' and '2015-12-31'
  group by a.id;
+
 
 
 
